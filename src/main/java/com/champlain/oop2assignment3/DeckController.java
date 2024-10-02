@@ -126,7 +126,8 @@ public class DeckController {
                     break;
                 case "Number Of Aces":
                     // TODO: Replace the following line of code.
-                    this.aScoreLabel.setText("Number of aces...");
+                    score = strategy.countAces(this.aHand);
+                    this.aScoreLabel.setText("Aces: " + score);
                     break;
                 default:
                     this.aScoreLabel.setText("This should not happen! You messed up.");
@@ -143,7 +144,8 @@ public class DeckController {
     @FXML
     protected void onDrawButtonClick() {
         if (!this.aDeck.isEmpty()) {
-            this.aHand.addCard(this.aDeck.draw());
+            Card drawnCard = this.aDeck.draw();
+            this.aHand.addCard(drawnCard);
         } else {
             Alert selectionErrorAlert = new Alert(Alert.AlertType.INFORMATION, "There are no more cards in the deck.");
             selectionErrorAlert.showAndWait();

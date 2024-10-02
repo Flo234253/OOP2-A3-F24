@@ -11,5 +11,21 @@ public class ScoringStrategies implements ScoringStrategy {
         return pCards.size();
     }
 
+    /**
+     * count number of ace in the drawn cards
+     * @param pCards how many aces are drawn
+     * @return number of ace in the drawn cards
+     */
+    public int countAces(CardCollection pCards) {
+        int aceCount = 0;
+        for (Card card : pCards) {
+            if (card.getRank() == Rank.ACE) {
+                aceCount++;
+            }
+        }
+        return aceCount;
+    }
+
+
 
 }
