@@ -1,6 +1,6 @@
 package com.champlain.oop2assignment3;
 
-public class ScoringStrategies implements ScoringStrategy {
+public class SimpleCountStrategy implements ScoringStrategy {
     /**
      *Calculates the score based on the size of the given card collection.
      * @param pCards the card collection to calculate the score from
