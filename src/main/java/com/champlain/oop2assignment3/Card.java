@@ -43,6 +43,30 @@ public class Card {
     public Suit getSuit() {
         return this.aSuit;
     }
+    /**
+     * Checks if this card is equal to another object.
+     *
+     * @param obj the object to compare with
+     * @return true if the objects are equal, false otherwise
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true; // Check if both references point to the same object
+        if (obj == null || getClass() != obj.getClass()) return false; // Check if the object is null or not of the same class
+
+        Card otherCard = (Card) obj; // Cast the object to Card
+        return aRank == otherCard.aRank && aSuit == otherCard.aSuit; // Compare rank and suit
+    }
+
+    /**
+     * Returns a hash code value for the object.
+     *
+     * @return the hash code value
+     */
+    @Override
+    public int hashCode() {
+        return 31 * aRank.hashCode() + aSuit.hashCode(); // Generate hash code based on rank and suit
+    }
 
     /**
      * Returns a string representation of this card.
