@@ -115,10 +115,14 @@ public class DeckController {
             Alert selectionErrorAlert = new Alert(Alert.AlertType.ERROR, "Please choose a scoring strategy first.");
             selectionErrorAlert.showAndWait();
         } else {
+            int score = 0;
+            ScoringStrategies strategy = new ScoringStrategies();
             switch (choice) {
                 case "Simple Count":
                     // TODO: Replace the following line of code.
-                    this.aScoreLabel.setText("Simple count...");
+                    strategy = new ScoringStrategies();
+                    score = strategy.calculateScore(this.aHand);
+                    this.aScoreLabel.setText("" + score);
                     break;
                 case "Number Of Aces":
                     // TODO: Replace the following line of code.
