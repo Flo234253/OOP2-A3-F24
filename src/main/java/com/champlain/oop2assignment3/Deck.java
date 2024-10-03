@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Comparator;
 
 /**
  * Represents a deck of playing cards.
@@ -63,4 +64,13 @@ public class Deck extends CardCollection implements CardSource {
     public Iterator<Card> iterator() {
         return this.aCards.iterator();
     }
+
+    /**
+     * Sorts the deck of cards by rank first, then by suit. Yes
+     */
+    public void sortByRank() {
+        this.aCards.sort(Comparator.comparing(Card::getRank).thenComparing(Card::getSuit));
+    }
 }
+
+
