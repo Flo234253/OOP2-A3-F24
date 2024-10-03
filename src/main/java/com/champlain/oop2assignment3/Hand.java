@@ -12,19 +12,6 @@ import java.util.List;
  * </p>
  */
 public class Hand extends CardCollection {
-    /**
-     * The list of cards in this hand.
-     */
-    private final List<Card> aCards = new ArrayList<>();
-
-    /**
-     * Adds a card to this hand.
-     *
-     * @param pCard the card to be added
-     */
-    public void addCard(Card pCard) {
-        this.aCards.add(pCard);
-    }
 
     /**
      * Checks if this hand is empty.
@@ -32,15 +19,8 @@ public class Hand extends CardCollection {
      * @return true if the hand has no cards, false otherwise
      */
     public boolean isEmpty() {
-        return this.aCards.isEmpty();
+        return size() == 0;
+
     }
 
-    /**
-     * Returns an iterator over the cards in this hand.
-     *
-     * @return an iterator for the cards
-     */
-    public Iterator<Card> iterator() {
-        return this.aCards.iterator();
-    }
 }
