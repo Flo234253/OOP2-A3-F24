@@ -94,13 +94,14 @@ public class DeckController {
                     this.aDeck.sortByRank();
                     break;
                 case "Suit First":
-                    // Sort by suit
-                    this.aDeck.sortBySuit();
+                    this.aDeck.sortBySuit(); // Sort by suit first
                     break;
                 default:
                     this.aDeckTextArea.setText("This should not happen! You messed up.");
                     break;
             }
+            // After sorting, update the display
+            this.displayCardCollections();
         }
     }
 
