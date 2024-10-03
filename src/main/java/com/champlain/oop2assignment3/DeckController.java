@@ -47,8 +47,9 @@ public class DeckController {
 
     /**
      * The deck of cards being managed by this controller.
+     * Now using the singleton instance.
      */
-    private final Deck aDeck = new Deck();
+    private final Deck aDeck = Deck.getInstance();
 
     /**
      * The hand of cards being managed by this controller.
@@ -93,8 +94,8 @@ public class DeckController {
                     this.aDeck.sortByRank();
                     break;
                 case "Suit First":
-                    // TODO: Replace the following line of code.
-                    this.aDeckTextArea.setText("This does not sort by suit first yet.");
+                    // Sort by suit
+                    this.aDeck.sortBySuit();
                     break;
                 default:
                     this.aDeckTextArea.setText("This should not happen! You messed up.");
@@ -115,14 +116,20 @@ public class DeckController {
             Alert selectionErrorAlert = new Alert(Alert.AlertType.ERROR, "Please choose a scoring strategy first.");
             selectionErrorAlert.showAndWait();
         } else {
+            int score = 0;
+            ScoringStrategy strategy ;
             switch (choice) {
                 case "Simple Count":
                     // TODO: Replace the following line of code.
-                    this.aScoreLabel.setText("Simple count...");
+                    strategy = new SimpleCountStrategy();
+                    score = strategy.calculateScore(this.aHand);
+                    this.aScoreLabel.setText("" + score);
                     break;
                 case "Number Of Aces":
                     // TODO: Replace the following line of code.
-                    this.aScoreLabel.setText("Number of aces...");
+                    strategy = new NumberOfAcesStrategy();
+                    score = strategy.calculateScore(this.aHand);
+                    this.aScoreLabel.setText("" + score);
                     break;
                 default:
                     this.aScoreLabel.setText("This should not happen! You messed up.");
@@ -140,6 +147,7 @@ public class DeckController {
     protected void onDrawButtonClick() {
         if (!this.aDeck.isEmpty()) {
             this.aHand.addCard(this.aDeck.draw());
+
         } else {
             Alert selectionErrorAlert = new Alert(Alert.AlertType.INFORMATION, "There are no more cards in the deck.");
             selectionErrorAlert.showAndWait();
